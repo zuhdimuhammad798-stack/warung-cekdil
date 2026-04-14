@@ -1,0 +1,40 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Login Page
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+ </head>
+ <body>
+  <div class="relative min-h-screen flex items-center justify-center">
+   <img alt="Cityscape with tall buildings under clear sky" class="absolute inset-0 w-full h-full object-cover" height="1080" src="https://storage.googleapis.com/a1aa/image/a845f05a-69ee-4ffe-7577-a772d918bbb9.jpg" width="1920"/>
+   <div class="absolute inset-0 bg-gradient-to-b from-[#2ea1e0] via-[#7a4ea8] to-[#7a4ea8] opacity-80">
+   </div>
+   <form class="relative max-w-md w-full px-6 py-10">
+    <h2 class="text-white text-xl font-normal mb-6 border-b border-white pb-2">
+     Welcome, Please login
+    </h2>
+    <input class="w-full mb-4 py-3 px-4 rounded-full text-gray-700 focus:outline-none" placeholder="Email" type="email"/>
+    <div class="flex items-center mb-6">
+     <input class="flex-grow py-3 px-4 rounded-full text-gray-700 focus:outline-none" placeholder="Password" type="password"/>
+     <button class="ml-4 text-white text-xs font-normal whitespace-nowrap" type="button">
+      Forgot Password?
+     </button>
+    </div>
+    <a href="index.html"><div class="bg-[#d60a57] text-white font-semibold text-xs uppercase rounded-full py-3 px-8 w-40"  >
+     SIGN IN
+    </div></a>
+   </form>
+  </div>
+ </body>
+</html>
