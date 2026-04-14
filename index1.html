@@ -1,0 +1,732 @@
+<html class="scroll-smooth" lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Warung Cek Dil - Menu Makanan Aceh
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      min-height: 100vh;
+    }
+    /* Background pattern overlay */
+    #background-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      background-image: radial-gradient(rgba(255 255 255 / 0.15) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+    }
+    /* Animations */
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+      opacity: 0;
+    }
+    .fade-in-delay-1 {
+      animation-delay: 0.2s;
+    }
+    .fade-in-delay-2 {
+      animation-delay: 0.4s;
+    }
+    .fade-in-delay-3 {
+      animation-delay: 0.6s;
+    }
+    .fade-in-delay-4 {
+      animation-delay: 0.8s;
+    }
+    .fade-in-delay-5 {
+      animation-delay: 1s;
+    }
+    .fade-in-delay-6 {
+      animation-delay: 1.2s;
+    }
+    .fade-in-delay-7 {
+      animation-delay: 1.4s;
+    }
+    .fade-in-delay-8 {
+      animation-delay: 1.6s;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    .btn-tambah:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .btn-tambah:active {
+      transform: scale(0.95);
+      transition: transform 0.1s ease;
+    }
+    .btn-clear:hover,
+    .btn-checkout:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .btn-clear:active,
+    .btn-checkout:active {
+      transform: scale(0.95);
+      transition: transform 0.1s ease;
+    }
+    /* Scroll smooth for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Scrollbar styling for cart table */
+    .cart-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+    .cart-scroll::-webkit-scrollbar-track {
+      background: #d1d4fa;
+      border-radius: 4px;
+    }
+    .cart-scroll::-webkit-scrollbar-thumb {
+      background: #059669;
+      border-radius: 4px;
+    }
+  </style>
+ </head>
+ <body class="flex flex-col min-h-screen">
+  <div aria-hidden="true" id="background-pattern">
+  </div>
+  <!-- Header / Navbar -->
+  <header class="bg-gradient-to-r from-green-600 to-green-800 shadow-lg sticky top-0 z-50" role="banner">
+   <div class="container mx-auto px-4 py-4 flex items-center justify-between text-white">
+    <div class="flex items-center space-x-3 select-none">
+     <img alt="Logo Warung Cek Dil, stylized letters WC in green and yellow" class="rounded-full w-12 h-12 object-cover" height="48" loading="lazy" src="https://storage.googleapis.com/a1aa/image/1860d86a-0319-488b-5493-9e42f2913f84.jpg" width="48"/>
+     <h1 class="text-3xl font-extrabold tracking-wide">
+      Warung Cek Dil
+     </h1>
+    </div>
+    <nav aria-label="Primary navigation" class="hidden md:flex space-x-10 font-semibold text-green-100">
+     <a class="hover:text-white transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-white rounded" href="#menu">
+      Menu
+     </a>
+     <a class="hover:text-white transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-white rounded" href="#keranjang">
+      Keranjang
+     </a>
+     <a class="hover:text-white transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-white rounded" href="#rating">
+      Rating
+     </a>
+     <a class="hover:text-white transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-white rounded" href="input.html">
+      Login
+     </a>
+    </nav>
+    <button aria-label="Toggle menu" class="md:hidden text-green-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded" id="btn-menu">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </div>
+   <!-- Mobile menu -->
+   <nav aria-label="Mobile navigation" class="hidden md:hidden bg-green-700 border-t border-green-600" id="mobile-menu">
+    <a class="block px-5 py-3 text-green-100 hover:bg-green-600 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-white" href="#menu">
+     Menu
+    </a>
+    <a class="block px-5 py-3 text-green-100 hover:bg-green-600 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-white" href="#keranjang">
+     Keranjang
+    </a>
+    <a class="block px-5 py-3 text-green-100 hover:bg-green-600 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-white" href="#rating">
+     Rating
+    </a>
+    <a class="block px-5 py-3 text-green-100 hover:bg-green-600 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-white" href="#kontak">
+     Kontak
+    </a>
+   </nav>
+  </header>
+  <main class="flex-grow container mx-auto px-4 py-10">
+   <!-- Hero Section -->
+   <section aria-label="Selamat datang di Warung Cek Dil" class="mb-14 text-center fade-in">
+    <h2 class="text-5xl font-extrabold text-green-900 mb-4 drop-shadow-lg" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.15)">
+     Selamat Datang di Warung Cek Dil
+    </h2>
+    <p class="text-xl text-green-800 max-w-3xl mx-auto leading-relaxed">
+     Menyajikan makanan khas Aceh yang lezat dan autentik. Pilih menu favorit
+        Anda dan pesan sekarang!
+    </p>
+   </section>
+   <!-- Menu Section -->
+   <section aria-label="Menu Makanan Aceh" class="mb-20 fade-in fade-in-delay-1" id="menu">
+    <h3 class="text-4xl font-bold text-green-800 mb-8 border-b-4 border-green-400 pb-3 max-w-max mx-auto drop-shadow-md">
+     Menu Makanan Aceh
+    </h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10" id="menu-list">
+     <!-- Menu Item 1 -->
+     <article aria-label="Mie Aceh, harga Rp 25.000" class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-500 transform hover:-translate-y-1 fade-in fade-in-delay-2" data-name="Mie Aceh" data-price="25000" tabindex="0">
+      <img alt="Mie Aceh, a bowl of spicy yellow noodles with shrimp, beef, and vegetables, served in a traditional Aceh style" class="w-full h-48 object-cover" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/c84dfcef-d9a2-41d6-3ff3-1497f7f61400.jpg" width="400"/>
+      <div class="p-5 flex flex-col flex-grow">
+       <h4 class="text-2xl font-semibold text-green-900 mb-2">
+        Mie Aceh
+       </h4>
+       <p class="text-gray-700 flex-grow leading-relaxed">
+        Mie kuning khas Aceh dengan bumbu rempah pedas, disajikan dengan
+              udang dan daging sapi.
+       </p>
+       <div class="mt-5 flex items-center justify-between font-bold text-green-800">
+        <span class="text-xl">
+         Rp 25.000
+        </span>
+        <button aria-label="Tambah Mie Aceh ke keranjang" class="btn-tambah bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition transform duration-300">
+         <i class="fas fa-cart-plus mr-2">
+         </i>
+         Tambah
+        </button>
+       </div>
+      </div>
+     </article>
+     <!-- Menu Item 2 -->
+     <article aria-label="Nasi Gurih, harga Rp 20.000" class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-500 transform hover:-translate-y-1 fade-in fade-in-delay-3" data-name="Nasi Gurih" data-price="20000" tabindex="0">
+      <img alt="Nasi Gurih Aceh, a plate of fragrant coconut rice served with fried chicken, boiled egg, and sambal" class="w-full h-48 object-cover" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/02cc01cf-d618-443a-873b-a4a22c097edb.jpg" width="400"/>
+      <div class="p-5 flex flex-col flex-grow">
+       <h4 class="text-2xl font-semibold text-green-900 mb-2">
+        Nasi Gurih
+       </h4>
+       <p class="text-gray-700 flex-grow leading-relaxed">
+        Nasi gurih khas Aceh yang harum dengan santan, disajikan dengan lauk
+              ayam goreng dan sambal.
+       </p>
+       <div class="mt-5 flex items-center justify-between font-bold text-green-800">
+        <span class="text-xl">
+         Rp 20.000
+        </span>
+        <button aria-label="Tambah Nasi Gurih ke keranjang" class="btn-tambah bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition transform duration-300">
+         <i class="fas fa-cart-plus mr-2">
+         </i>
+         Tambah
+        </button>
+       </div>
+      </div>
+     </article>
+     <!-- Menu Item 3 -->
+     <article aria-label="Kuah Pliek U, harga Rp 30.000" class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-500 transform hover:-translate-y-1 fade-in fade-in-delay-4" data-name="Kuah Pliek U" data-price="30000" tabindex="0">
+      <img alt="Kuah Pliek U, a traditional Aceh spicy stew with vegetables and meat in a dark rich broth" class="w-full h-48 object-cover" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0d4d0388-0a50-4daf-a5da-74c4703e6a06.jpg" width="400"/>
+      <div class="p-5 flex flex-col flex-grow">
+       <h4 class="text-2xl font-semibold text-green-900 mb-2">
+        Kuah Pliek U
+       </h4>
+       <p class="text-gray-700 flex-grow leading-relaxed">
+        Sup khas Aceh dengan kuah hitam pekat dari pliek u, berisi sayur dan
+              daging.
+       </p>
+       <div class="mt-5 flex items-center justify-between font-bold text-green-800">
+        <span class="text-xl">
+         Rp 30.000
+        </span>
+        <button aria-label="Tambah Kuah Pliek U ke keranjang" class="btn-tambah bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition transform duration-300">
+         <i class="fas fa-cart-plus mr-2">
+         </i>
+         Tambah
+        </button>
+       </div>
+      </div>
+     </article>
+     <!-- Menu Item 4 -->
+     <article aria-label="Roti Canai, harga Rp 15.000" class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-500 transform hover:-translate-y-1 fade-in fade-in-delay-5" data-name="Roti Canai" data-price="15000" tabindex="0">
+      <img alt="Roti Canai Aceh, a crispy flatbread served with a bowl of curry sauce" class="w-full h-48 object-cover" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/4e0fe180-bb8d-40f2-cad3-b5f15a2935bd.jpg" width="400"/>
+      <div class="p-5 flex flex-col flex-grow">
+       <h4 class="text-2xl font-semibold text-green-900 mb-2">
+        Roti Canai
+       </h4>
+       <p class="text-gray-700 flex-grow leading-relaxed">
+        Roti canai khas Aceh yang renyah, cocok disantap dengan kuah kari
+              hangat.
+       </p>
+       <div class="mt-5 flex items-center justify-between font-bold text-green-800">
+        <span class="text-xl">
+         Rp 15.000
+        </span>
+        <button aria-label="Tambah Roti Canai ke keranjang" class="btn-tambah bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition transform duration-300">
+         <i class="fas fa-cart-plus mr-2">
+         </i>
+         Tambah
+        </button>
+       </div>
+      </div>
+     </article>
+     <!-- Menu Item 5 -->
+     <article aria-label="Ayam Tangkap, harga Rp 35.000" class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-500 transform hover:-translate-y-1 fade-in fade-in-delay-6" data-name="Ayam Tangkap" data-price="35000" tabindex="0">
+      <img alt="Ayam Tangkap Aceh, crispy fried chicken with herbs and spices served on a plate" class="w-full h-48 object-cover" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/5e607ebb-1b60-49a6-b3ac-627c3fae6ccb.jpg" width="400"/>
+      <div class="p-5 flex flex-col flex-grow">
+       <h4 class="text-2xl font-semibold text-green-900 mb-2">
+        Ayam Tangkap
+       </h4>
+       <p class="text-gray-700 flex-grow leading-relaxed">
+        Ayam goreng khas Aceh yang renyah dengan rempah-rempah dan daun kari.
+       </p>
+       <div class="mt-5 flex items-center justify-between font-bold text-green-800">
+        <span class="text-xl">
+         Rp 35.000
+        </span>
+        <button aria-label="Tambah Ayam Tangkap ke keranjang" class="btn-tambah bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition transform duration-300">
+         <i class="fas fa-cart-plus mr-2">
+         </i>
+         Tambah
+        </button>
+       </div>
+      </div>
+     </article>
+     <!-- Menu Item 6 -->
+     <article aria-label="Sate Matang, harga Rp 28.000" class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-500 transform hover:-translate-y-1 fade-in fade-in-delay-7" data-name="Sate Matang" data-price="28000" tabindex="0">
+      <img alt="Sate Matang Aceh, grilled beef skewers served with thick peanut sauce on a plate" class="w-full h-48 object-cover" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0b3a137e-2607-4bc8-e858-5f85a15bf843.jpg" width="400"/>
+      <div class="p-5 flex flex-col flex-grow">
+       <h4 class="text-2xl font-semibold text-green-900 mb-2">
+        Sate Matang
+       </h4>
+       <p class="text-gray-700 flex-grow leading-relaxed">
+        Sate khas Aceh dengan daging sapi yang dibakar dan disajikan dengan
+              saus kacang kental.
+       </p>
+       <div class="mt-5 flex items-center justify-between font-bold text-green-800">
+        <span class="text-xl">
+         Rp 28.000
+        </span>
+        <button aria-label="Tambah Sate Matang ke keranjang" class="btn-tambah bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition transform duration-300">
+         <i class="fas fa-cart-plus mr-2">
+         </i>
+         Tambah
+        </button>
+       </div>
+      </div>
+     </article>
+     <!-- Menu Item 7 -->
+     <article aria-label="Kue Adee, harga Rp 12.000" class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-500 transform hover:-translate-y-1 fade-in fade-in-delay-8" data-name="Kue Adee" data-price="12000" tabindex="0">
+      <img alt="Kue Adee Aceh, traditional sweet rice cake with coconut and palm sugar topping" class="w-full h-48 object-cover" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/eedd7dde-561c-4d9c-6d73-13702af1340c.jpg" width="400"/>
+      <div class="p-5 flex flex-col flex-grow">
+       <h4 class="text-2xl font-semibold text-green-900 mb-2">
+        Kue Adee
+       </h4>
+       <p class="text-gray-700 flex-grow leading-relaxed">
+        Kue tradisional Aceh yang manis terbuat dari tepung beras dan gula
+              merah, cocok untuk pencuci mulut.
+       </p>
+       <div class="mt-5 flex items-center justify-between font-bold text-green-800">
+        <span class="text-xl">
+         Rp 12.000
+        </span>
+        <button aria-label="Tambah Kue Adee ke keranjang" class="btn-tambah bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition transform duration-300">
+         <i class="fas fa-cart-plus mr-2">
+         </i>
+         Tambah
+        </button>
+       </div>
+      </div>
+     </article>
+     <!-- Menu Item 8 -->
+     <article aria-label="Es Timun Serut, harga Rp 10.000" class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-500 transform hover:-translate-y-1 fade-in fade-in-delay-8" data-name="Es Timun Serut" data-price="10000" tabindex="0">
+      <img alt="Es Timun Serut Aceh, refreshing cucumber shaved ice drink with syrup and lime" class="w-full h-48 object-cover" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/e81a9da6-f736-42b2-b5db-d99c1fcb5371.jpg" width="400"/>
+      <div class="p-5 flex flex-col flex-grow">
+       <h4 class="text-2xl font-semibold text-green-900 mb-2">
+        Es Timun Serut
+       </h4>
+       <p class="text-gray-700 flex-grow leading-relaxed">
+        Minuman segar khas Aceh dengan timun serut, es serut, dan sirup manis.
+       </p>
+       <div class="mt-5 flex items-center justify-between font-bold text-green-800">
+        <span class="text-xl">
+         Rp 10.000
+        </span>
+        <button aria-label="Tambah Es Timun Serut ke keranjang" class="btn-tambah bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition transform duration-300">
+         <i class="fas fa-cart-plus mr-2">
+         </i>
+         Tambah
+        </button>
+       </div>
+      </div>
+     </article>
+    </div>
+   </section>
+   <!-- Keranjang Pesanan Section -->
+   <section aria-label="Keranjang Pesanan" class="mb-20 bg-white rounded-3xl shadow-2xl p-8 max-w-5xl mx-auto fade-in" id="keranjang">
+    <h3 class="text-4xl font-bold text-green-800 mb-8 border-b-4 border-green-400 pb-3 max-w-max mx-auto drop-shadow-md">
+     Keranjang Pesanan
+    </h3>
+    <div class="overflow-x-auto cart-scroll rounded-lg shadow-inner">
+     <table aria-describedby="cart-total" class="w-full text-left border-collapse" role="table">
+      <thead>
+       <tr class="bg-green-100 text-green-900 font-semibold">
+        <th class="py-4 px-6 border border-green-300" scope="col">
+         Nama Menu
+        </th>
+        <th class="py-4 px-6 border border-green-300" scope="col">
+         Harga
+        </th>
+        <th class="py-4 px-6 border border-green-300" scope="col">
+         Jumlah
+        </th>
+        <th class="py-4 px-6 border border-green-300" scope="col">
+         Subtotal
+        </th>
+        <th class="py-4 px-6 border border-green-300" scope="col">
+         Aksi
+        </th>
+       </tr>
+      </thead>
+      <tbody class="divide-y divide-green-200 text-green-900" id="cart-items" role="rowgroup">
+       <tr class="text-center text-gray-500" role="row">
+        <td class="py-8" colspan="5" role="cell">
+         Keranjang kosong
+        </td>
+       </tr>
+      </tbody>
+      <tfoot>
+       <tr class="bg-green-50 font-bold text-green-900">
+        <td class="py-4 px-6 border border-green-300 text-right" colspan="3" role="row">
+         Total
+        </td>
+        <td class="py-4 px-6 border border-green-300 text-xl" id="cart-total" role="cell">
+         Rp 0
+        </td>
+        <td class="border border-green-300">
+        </td>
+       </tr>
+      </tfoot>
+     </table>
+    </div>
+    <div class="mt-8 flex justify-end space-x-6">
+     <button aria-label="Bersihkan keranjang" class="btn-clear bg-red-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-offset-2 transition transform duration-300" id="btn-clear">
+      Bersihkan Keranjang
+     </button>
+     <button aria-label="Checkout pesanan" class="btn-checkout bg-green-700 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-offset-2 transition transform duration-300" id="btn-checkout">
+      Checkout
+     </button>
+    </div>
+   </section>
+   <!-- Rating Section -->
+   <section aria-label="Rating Makanan oleh Pelanggan" class="mb-20 bg-white rounded-3xl shadow-2xl p-8 max-w-5xl mx-auto fade-in" id="rating">
+    <h3 class="text-4xl font-bold text-green-800 mb-8 border-b-4 border-green-400 pb-3 max-w-max mx-auto drop-shadow-md">
+     Rating Makanan oleh Pelanggan
+    </h3>
+    <div class="space-y-8" id="rating-list">
+     <article aria-label="Rating dari Aidil untuk Mie Aceh, 4.5 bintang" class="border border-green-300 rounded-2xl p-6 bg-green-50 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6" tabindex="0">
+      <img alt="Foto profil Aidil, pelanggan yang memberikan rating" class="rounded-full w-24 h-24 object-cover flex-shrink-0" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/59638e8c-2885-4320-6be5-98a379c7706c.jpg" width="96"/>
+      <div class="flex-grow">
+       <h4 class="font-extrabold text-green-900 text-2xl mb-1">
+        Aidil
+       </h4>
+       <p class="text-green-700 italic mb-2">
+        Mie Aceh
+       </p>
+       <div aria-label="Rating 4.5 dari 5 bintang" class="flex space-x-1 text-yellow-400 mb-3">
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star-half-alt">
+        </i>
+       </div>
+       <p class="text-green-800 leading-relaxed">
+        Mie Aceh-nya sangat lezat dan pedasnya pas! Saya suka tekstur mie dan
+              bumbunya yang kaya.
+       </p>
+      </div>
+     </article>
+     <article aria-label="Rating dari Rina Sari untuk Ayam Tangkap, 4 bintang" class="border border-green-300 rounded-2xl p-6 bg-green-50 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6" tabindex="0">
+      <img alt="Foto profil Rina Sari, pelanggan yang memberikan rating" class="rounded-full w-24 h-24 object-cover flex-shrink-0" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/1835cc4c-7d2e-464d-ae97-c204088f4e63.jpg" width="96"/>
+      <div class="flex-grow">
+       <h4 class="font-extrabold text-green-900 text-2xl mb-1">
+        Rina Sari
+       </h4>
+       <p class="text-green-700 italic mb-2">
+        Ayam Tangkap
+       </p>
+       <div aria-label="Rating 4 dari 5 bintang" class="flex space-x-1 text-yellow-400 mb-3">
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="far fa-star">
+        </i>
+       </div>
+       <p class="text-green-800 leading-relaxed">
+        Ayam Tangkap-nya renyah dan bumbunya meresap sampai ke tulang. Mantap!
+       </p>
+      </div>
+     </article>
+     <article aria-label="Rating dari Dedi H untuk Nasi Gurih, 3.5 bintang" class="border border-green-300 rounded-2xl p-6 bg-green-50 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6" tabindex="0">
+      <img alt="Foto profil Dedi H, pelanggan yang memberikan rating" class="rounded-full w-24 h-24 object-cover flex-shrink-0" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0ae367d5-e07c-403c-7b20-fe4598eea3f7.jpg" width="96"/>
+      <div class="flex-grow">
+       <h4 class="font-extrabold text-green-900 text-2xl mb-1">
+        Dedi H
+       </h4>
+       <p class="text-green-700 italic mb-2">
+        Nasi Gurih
+       </p>
+       <div aria-label="Rating 3.5 dari 5 bintang" class="flex space-x-1 text-yellow-400 mb-3">
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star-half-alt">
+        </i>
+        <i aria-hidden="true" class="far fa-star">
+        </i>
+       </div>
+       <p class="text-green-800 leading-relaxed">
+        Nasi Gurih-nya harum dan lauknya lengkap. Cocok untuk sarapan pagi.
+       </p>
+      </div>
+     </article>
+     <article aria-label="Rating dari Maya S untuk Sate Matang, 5 bintang" class="border border-green-300 rounded-2xl p-6 bg-green-50 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6" tabindex="0">
+      <img alt="Foto profil Maya S, pelanggan yang memberikan rating" class="rounded-full w-24 h-24 object-cover flex-shrink-0" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/d52ad2eb-f16b-4660-a2ee-f9d826fec938.jpg" width="96"/>
+      <div class="flex-grow">
+       <h4 class="font-extrabold text-green-900 text-2xl mb-1">
+        Maya S
+       </h4>
+       <p class="text-green-700 italic mb-2">
+        Sate Matang
+       </p>
+       <div aria-label="Rating 5 dari 5 bintang" class="flex space-x-1 text-yellow-400 mb-3">
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+       </div>
+       <p class="text-green-800 leading-relaxed">
+        Sate Matang-nya empuk dan saus kacangnya gurih. Saya pasti pesan lagi!
+       </p>
+      </div>
+     </article>
+     <article aria-label="Rating dari Arif R untuk Roti Canai, 3 bintang" class="border border-green-300 rounded-2xl p-6 bg-green-50 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6" tabindex="0">
+      <img alt="Foto profil Arif R, pelanggan yang memberikan rating" class="rounded-full w-24 h-24 object-cover flex-shrink-0" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/4557af3f-46eb-4893-dc19-0c619e3b13e7.jpg" width="96"/>
+      <div class="flex-grow">
+       <h4 class="font-extrabold text-green-900 text-2xl mb-1">
+        Arif R
+       </h4>
+       <p class="text-green-700 italic mb-2">
+        Roti Canai
+       </p>
+       <div aria-label="Rating 3 dari 5 bintang" class="flex space-x-1 text-yellow-400 mb-3">
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="fas fa-star">
+        </i>
+        <i aria-hidden="true" class="far fa-star">
+        </i>
+        <i aria-hidden="true" class="far fa-star">
+        </i>
+       </div>
+       <p class="text-green-800 leading-relaxed">
+        Roti Canai-nya renyah tapi agak kurang gurih. Tapi tetap enak untuk
+              teman kari.
+       </p>
+      </div>
+     </article>
+    </div>
+   </section>
+   <!-- Kontak Section -->
+   <section aria-label="Kontak dan Lokasi Warung Cek Dil" class="mb-20 bg-white rounded-3xl shadow-2xl p-8 max-w-5xl mx-auto fade-in" id="kontak">
+    <h3 class="text-4xl font-bold text-green-800 mb-8 border-b-4 border-green-400 pb-3 max-w-max mx-auto drop-shadow-md">
+     Kontak &amp; Lokasi Warung Cek Dil
+    </h3>
+    <div class="space-y-8 text-green-900 text-lg max-w-3xl mx-auto">
+     <div class="flex items-center space-x-4">
+      <i class="fas fa-envelope text-green-700 text-3xl flex-shrink-0">
+      </i>
+      <a class="hover:underline font-semibold" href="mailto:aidilaceh759@gmail.com">
+       aidilaceh759@gmail.com
+      </a>
+     </div>
+     <div class="flex items-center space-x-4">
+      <i class="fas fa-phone-alt text-green-700 text-3xl flex-shrink-0">
+      </i>
+      <a class="hover:underline font-semibold" href="tel:+6289626060199">
+       0896-2606-0199 (WA)
+      </a>
+     </div>
+     <div class="flex items-center space-x-4">
+      <i class="fas fa-map-marker-alt text-green-700 text-3xl flex-shrink-0">
+      </i>
+      <address class="not-italic font-semibold">
+       Dayah Sinthop, Mila, Pidie, Aceh, Indonesia
+      </address>
+     </div>
+     <div class="rounded-3xl overflow-hidden shadow-lg border border-green-300">
+      <iframe allowfullscreen="" height="350" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63804.123456789!2d96.1234567!3d5.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3040a123456789ab%3A0xabcdef1234567890!2sDayah%20Sinthop%2C%20Mila%2C%20Pidie%2C%20Aceh!5e0!3m2!1sid!2sid!4v1687000000000!5m2!1sid!2sid" style="border:0;" title="Lokasi Warung Cek Dil di Dayah Sinthop, Mila, Pidie, Aceh" width="100%">
+      </iframe>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="bg-gradient-to-r from-green-800 to-green-900 text-green-100 py-6 text-center select-none shadow-inner" role="contentinfo">
+   <p>
+    © 2025 Warung Cek Dil - Makanan Khas Aceh. All rights reserved.
+   </p>
+  </footer>
+  <script>
+   // Mobile menu toggle
+    const btnMenu = document.getElementById("btn-menu");
+    const mobileMenu = document.getElementById("mobile-menu");
+    btnMenu.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Keranjang (Cart) logic
+    const cartItemsEl = document.getElementById("cart-items");
+    const cartTotalEl = document.getElementById("cart-total");
+    const btnClear = document.getElementById("btn-clear");
+    const btnCheckout = document.getElementById("btn-checkout");
+    const addButtons = document.querySelectorAll(".btn-tambah");
+
+    // Cart data structure: {name, price, quantity}
+    let cart = [];
+
+    function formatRupiah(number) {
+      return (
+        "Rp " +
+        number
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      );
+    }
+
+    function renderCart() {
+      cartItemsEl.innerHTML = "";
+      if (cart.length === 0) {
+        const tr = document.createElement("tr");
+        tr.classList.add("text-center", "text-gray-500");
+        tr.innerHTML = `<td colspan="5" class="py-8">Keranjang kosong</td>`;
+        cartItemsEl.appendChild(tr);
+        cartTotalEl.textContent = "Rp 0";
+        return;
+      }
+
+      let total = 0;
+      cart.forEach((item, index) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        const tr = document.createElement("tr");
+        tr.classList.add("border-b", "border-green-300", "text-green-900", "font-semibold");
+        tr.innerHTML = `
+          <td class="py-4 px-6 border border-green-300">${item.name}</td>
+          <td class="py-4 px-6 border border-green-300">${formatRupiah(
+            item.price
+          )}</td>
+          <td class="py-4 px-6 border border-green-300 text-center">
+            <button aria-label="Kurangi jumlah ${item.name}" data-index="${index}" class="btn-decrease text-red-600 hover:text-red-800 font-bold px-3 rounded focus:outline-none focus:ring-2 focus:ring-red-400">-</button>
+            <span class="mx-3">${item.quantity}</span>
+            <button aria-label="Tambah jumlah ${item.name}" data-index="${index}" class="btn-increase text-green-600 hover:text-green-800 font-bold px-3 rounded focus:outline-none focus:ring-2 focus:ring-green-400">+</button>
+          </td>
+          <td class="py-4 px-6 border border-green-300">${formatRupiah(
+            subtotal
+          )}</td>
+          <td class="py-4 px-6 border border-green-300 text-center">
+            <button aria-label="Hapus ${item.name} dari keranjang" data-index="${index}" class="btn-remove text-red-700 hover:text-red-900 font-semibold focus:outline-none focus:ring-2 focus:ring-red-500 rounded">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        `;
+        cartItemsEl.appendChild(tr);
+      });
+      cartTotalEl.textContent = formatRupiah(total);
+
+      // Attach event listeners for increase, decrease, remove
+      document.querySelectorAll(".btn-increase").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.currentTarget.dataset.index;
+          cart[idx].quantity++;
+          renderCart();
+        });
+      });
+      document.querySelectorAll(".btn-decrease").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.currentTarget.dataset.index;
+          if (cart[idx].quantity > 1) {
+            cart[idx].quantity--;
+          } else {
+            // Remove if quantity goes below 1
+            cart.splice(idx, 1);
+          }
+          renderCart();
+        });
+      });
+      document.querySelectorAll(".btn-remove").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.currentTarget.dataset.index;
+          cart.splice(idx, 1);
+          renderCart();
+        });
+      });
+    }
+
+    addButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const article = e.currentTarget.closest("article");
+        const name = article.dataset.name;
+        const price = parseInt(article.dataset.price);
+
+        const foundIndex = cart.findIndex((item) => item.name === name);
+        if (foundIndex !== -1) {
+          cart[foundIndex].quantity++;
+        } else {
+          cart.push({ name, price, quantity: 1 });
+        }
+        renderCart();
+      });
+    });
+
+    btnClear.addEventListener("click", () => {
+      if (cart.length === 0) {
+        alert("Keranjang sudah kosong.");
+        return;
+      }
+      if (confirm("Apakah Anda yakin ingin mengosongkan keranjang?")) {
+        cart = [];
+        renderCart();
+      }
+    });
+
+    btnCheckout.addEventListener("click", () => {
+      if (cart.length === 0) {
+        alert("Keranjang kosong. Silakan tambahkan menu terlebih dahulu.");
+        return;
+      }
+      let pesan = "Pesanan Anda:\n";
+      let total = 0;
+      cart.forEach((item) => {
+        pesan += `${item.name} x${item.quantity} = ${formatRupiah(
+          item.price * item.quantity
+        )}\n`;
+        total += item.price * item.quantity;
+      });
+      pesan += `Total: ${formatRupiah(total)}\n\nTerima kasih telah memesan di Warung Cek Dil!`;
+
+      alert(pesan);
+      cart = [];
+      renderCart();
+    });
+
+    // Initial render
+    renderCart();
+  </script>
+ </body>
+</html>
